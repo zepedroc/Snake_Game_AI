@@ -7,6 +7,7 @@ import numpy as np
 pygame.init()
 font = pygame.font.Font('arial.ttf', 25)
 
+
 class Direction(Enum):
     RIGHT = 1
     LEFT = 2
@@ -24,10 +25,8 @@ BLUE2 = (0, 100, 255)
 BLACK = (0, 0, 0)
 
 BLOCK_SIZE = 20
-SPEED = 20
+SPEED = 500
 
-clock_wise = [Direction.RIGHT, Direction.DOWN,
-                      Direction.LEFT, Direction.UP]
 
 class SnakeGameAI:
 
@@ -125,6 +124,9 @@ class SnakeGameAI:
 
     def _move(self, action):
         # action: [straight, right, left]
+
+        clock_wise = [Direction.RIGHT, Direction.DOWN,
+                      Direction.LEFT, Direction.UP]
 
         idx = clock_wise.index(self.direction)
 

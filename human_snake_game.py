@@ -5,7 +5,6 @@ from collections import namedtuple
 
 pygame.init()
 font = pygame.font.Font('arial.ttf', 25)
-#font = pygame.font.SysFont('arial', 25)
 
 class Direction(Enum):
     RIGHT = 1
@@ -19,7 +18,7 @@ Point = namedtuple('Point', 'x, y')
 WHITE = (255, 255, 255)
 RED = (200,0,0)
 BLUE1 = (0, 0, 255)
-BLUE2 = (0, 100, 255)
+BLUE2 = (100, 200, 255)
 BLACK = (0,0,0)
 
 BLOCK_SIZE = 20
@@ -61,13 +60,13 @@ class SnakeGame:
                 pygame.quit()
                 quit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
+                if event.key == pygame.K_LEFT and self.direction != Direction.RIGHT:
                     self.direction = Direction.LEFT
-                elif event.key == pygame.K_RIGHT:
+                elif event.key == pygame.K_RIGHT and self.direction != Direction.LEFT:
                     self.direction = Direction.RIGHT
-                elif event.key == pygame.K_UP:
+                elif event.key == pygame.K_UP and self.direction != Direction.DOWN:
                     self.direction = Direction.UP
-                elif event.key == pygame.K_DOWN:
+                elif event.key == pygame.K_DOWN and self.direction != Direction.UP:
                     self.direction = Direction.DOWN
         
         # 2. move
